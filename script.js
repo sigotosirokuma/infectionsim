@@ -577,11 +577,6 @@ resetButton.addEventListener('click', () => {
 // ページロード時に一度統計表示を初期化
 document.addEventListener('DOMContentLoaded', () => {
     updateStatisticsDisplay();
-
-    // キャンバスのサイズを親要素に合わせて設定
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
     // 初期グラフの描画
     const chartCtx = document.getElementById('chartCanvas').getContext('2d');
     chart = new Chart(chartCtx, {
@@ -609,11 +604,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-// キャンバスのサイズを調整する関数
-function resizeCanvas() {
-    const simulationArea = document.querySelector('.simulation-area');
-    canvas.width = simulationArea.clientWidth;
-    canvas.height = simulationArea.clientWidth * (3 / 4); // 例: 4:3のアスペクト比を維持
-    // 必要に応じて、ここで人の初期位置を再計算することも検討
-}

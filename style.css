@@ -88,8 +88,6 @@ button:hover {
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     margin-bottom: 20px;
-    max-width: 100%; /* 追加: キャンバスが親要素の幅を超えないように */
-    height: auto; /* 追加: アスペクト比を維持 */
 }
 
 .statistics {
@@ -167,9 +165,10 @@ button:hover {
         width: 100%;
     }
 
+    /* キャンバスの固定サイズを維持しつつ、中央に配置 */
     #simulationCanvas {
-        width: 100%; /* キャンバスの幅を100%に */
-        height: auto; /* 高さを自動調整 */
+        display: block;
+        margin: 0 auto;
     }
 
     .statistics {
