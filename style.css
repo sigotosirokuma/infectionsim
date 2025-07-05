@@ -88,6 +88,8 @@ button:hover {
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     margin-bottom: 20px;
+    max-width: 100%; /* 追加: キャンバスが親要素の幅を超えないように */
+    height: auto; /* 追加: アスペクト比を維持 */
 }
 
 .statistics {
@@ -134,4 +136,51 @@ button:hover {
 #chartCanvas {
     width: 100% !important;
     height: 400px !important;
+}
+
+/* スマートフォン向けスタイル */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* 縦積みに変更 */
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .controls {
+        min-width: unset; /* 最小幅を解除 */
+        padding-right: 0; /* パディングを解除 */
+        border-right: none; /* ボーダーを解除 */
+        border-bottom: 1px solid #eee; /* 下部にボーダーを追加 */
+        padding-bottom: 20px; /* 下部にパディングを追加 */
+        margin-bottom: 20px; /* 下部にマージンを追加 */
+    }
+
+    .param-group input[type="range"] {
+        width: calc(100% - 70px); /* 幅を調整 */
+    }
+
+    .param-group span {
+        width: 60px; /* 幅を調整 */
+    }
+
+    .simulation-area {
+        width: 100%;
+    }
+
+    #simulationCanvas {
+        width: 100%; /* キャンバスの幅を100%に */
+        height: auto; /* 高さを自動調整 */
+    }
+
+    .statistics {
+        margin-top: 10px;
+    }
+
+    .graph-area {
+        padding: 10px;
+    }
+
+    #chartCanvas {
+        height: 300px !important; /* グラフの高さを調整 */
+    }
 }
