@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>感染症シミュレーションゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>感染症シミュレーションゲーム</h1>
+
+    <div class="container">
+        <div class="controls">
+            <h2>パラメータ設定</h2>
+            <div class="param-group">
+                <label for="populationSize">全体人数:</label>
+                <input type="range" id="populationSize" min="10" max="300" value="70">
+                <span id="populationSizeValue">70</span>
+            </div>
+            <div class="param-group">
+                <label for="initialInfected">初期感染者数:</label>
+                <input type="range" id="initialInfected" min="1" max="100" value="5">
+                <span id="initialInfectedValue">5</span>
+            </div>
+            <div class="param-group">
+                <label for="infectionProbability">感染確率（1に近いほど感染しやすい）:</label>
+                <input type="range" id="infectionProbability" min="0.00" max="1.00" step="0.01" value="0.50">
+                <span id="infectionProbabilityValue">0.50</span>
+            </div>
+            <div class="param-group">
+                <label for="recoveryTime">感染から回復するまでの時間（秒）:</label>
+                <input type="range" id="recoveryTime" min="1" max="60" value="10">
+                <span id="recoveryTimeValue">10</span>
+            </div>
+            <div class="param-group">
+                <label for="lockdownTriggerThreshold">ロックダウンが発動する感染者数割合（%）:</label>
+                <input type="range" id="lockdownTriggerThreshold" min="1" max="100" value="40">
+                <span id="lockdownTriggerThresholdValue">40</span>
+            </div>
+            <div class="param-group">
+                <label for="lockdownDuration">ロックダウン継続時間（秒）:</label>
+                <input type="range" id="lockdownDuration" min="1" max="60" value="15">
+                <span id="lockdownDurationValue">15</span>
+            </div>
+            <div class="param-group">
+                <label for="lockdownDivisions">ロックダウン分割数（ｎ×ｎ）:</label>
+                <input type="range" id="lockdownDivisions" min="1" max="20" value="4">
+                <span id="lockdownDivisionsValue">4</span>
+            </div>
+            <div class="param-group">
+                <label for="infectionCheckInterval">感染判定間隔（少ないほど感染しやすい）:</label>
+                <input type="range" id="infectionCheckInterval" min="1" max="10" value="3">
+                <span id="infectionCheckIntervalValue">3</span>
+            </div>
+            <div class="param-group">
+                <label for="vaccinationRate">ワクチン接種割合（%）:</label>
+                <input type="range" id="vaccinationRate" min="0" max="100" value="30">
+                <span id="vaccinationRateValue">30</span>
+            </div>
+            <button id="startButton">シミュレーション開始</button>
+            <button id="resetButton">リセット</button>
+        </div>
+
+        <div class="simulation-area">
+            <canvas id="simulationCanvas" width="800" height="600"></canvas>
+            <div class="statistics">
+                <h2>現在の統計</h2>
+                <p>健康: <span id="healthyCount">0</span></p>
+                <p>ワクチン接種済み: <span id="vaccinatedCount">0</span></p>
+                <p>感染: <span id="infectedCount">0</span></p>
+                <p>感染 (ブレークスルー): <span id="vaccinatedInfectedCount">0</span></p>
+                <p>持続感染: <span id="persistentCount">0</span></p>
+                <p>回復: <span id="recoveredCount">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="graph-area">
+        <h2>状態変化グラフ</h2>
+        <canvas id="chartCanvas"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
